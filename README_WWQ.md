@@ -5,7 +5,7 @@ sudo apt install vim emacs net-tools openssh-server git  gcc g++ make cmake
 ```
 
 ```
-sudo apt install  libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev 
+sudo apt install libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 sudo apt install --no-install-recommends libboost-all-dev
 sudo apt install libgflags-dev libgoogle-glog-dev liblmdb-dev
 sudo apt install libopenblas-dev libatlas-base-dev
@@ -21,7 +21,7 @@ bash Miniconda3-py38_4.12.0-Linux-x86_64.sh
 ```
 conda create -n dl-test python=3.8
 conda activate dl-test
-conda install scikit-image numpy pytest protobuf
+conda install scikit-image numpy pytest
 ```
 
 ## caffe源码编译安装和测试
@@ -33,6 +33,13 @@ cmake ../
 make all
 make install
 make runtest
+```
+
+## conda虚拟环境安装protobuf
+注意：caffe编译完后再进行安装
+```
+conda activate dl-test
+conda install protobuf
 ```
 
 ## pycaffe测试
