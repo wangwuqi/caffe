@@ -41,3 +41,13 @@ import sys
 sys.path.insert(0, '/home/wwq/Documents/repos/caffe/python')
 import caffe
 ```
+注意：libtiff需要4.0版本，wsl ubuntu20.04更新后可能会升级为4.1，可以从[官网](http://download.osgeo.org/libtiff/)下载[tiff-4.0.10.zip](http://download.osgeo.org/libtiff/tiff-4.0.10.zip)，然后编译安装libtiff
+```
+cd tiff-4.0.10/
+mkdir cmake-build
+cd cmake-build/
+cmake ..
+make
+sudo make install
+```
+参考：[编译报错：undefined reference to `TIFFReadDirectory@LIBTIFF_4.0‘解决方法](https://blog.csdn.net/qq_39779233/article/details/127718188)
