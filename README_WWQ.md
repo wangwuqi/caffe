@@ -1,44 +1,52 @@
+## 开发工具安装
+```
+sudo apt update
+sudo apt install vim emacs net-tools openssh-server git  gcc g++ make cmake
+```
+
+```
+sudo apt install libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+sudo apt install --no-install-recommends libboost-all-dev
+sudo apt install libgflags-dev libgoogle-glog-dev liblmdb-dev
+sudo apt install libopenblas-dev libatlas-base-dev
+```
+
+## 安装Miniconda3
+下载python3.8版本的Miniconda3，并安装
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh
+bash Miniconda3-py38_4.12.0-Linux-x86_64.sh
+```
+
 ## 创建conda环境
 ```
 conda create -n dl-test python=3.8
 conda activate dl-test
-conda install scikit-image numpy pytest protobuf
-```
-系统安装的protobuf要与conda安装的protobuf版本一致，因此系统protobuf可以通过源码安装
-libprotobuf-dev和protobuf-compiler的安装通过源码安装，例如下载`https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protobuf-cpp-3.20.1.tar.gz`
-```
-tar -xvzf protobuf-cpp-3.20.1.tar.gz 
-cd protobuf-cpp-3.20.1/
-./configure
-make -j
-make check -j8
-sudo make install
-sudo ldconfig
-```
-## 开发工具安装
-```
-sudo apt install  libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev 
-sudo apt install --no-install-recommends libboost-all-dev
-sudo apt install libgflags-dev libgoogle-glog-dev liblmdb-dev
-sudo apt install libopenblas-dev libatlas-base-dev
+conda install scikit-image numpy pytest
 ```
 
 ## caffe源码编译安装和测试
 http://caffe.berkeleyvision.org/installation.html
 ```
 cd caffe
-sudo make clean
 mkdir build && cd build
-cmake ..
-make all -j8
+cmake ../
+make all
 make install
-make runtest -j8
+make runtest
+```
+
+## conda虚拟环境安装protobuf
+注意：caffe编译完后再进行安装
+```
+conda activate dl-test
+conda install protobuf
 ```
 
 ## pycaffe测试
 ```
 import sys
-sys.path.insert(0, '/home/wwq/Documents/repos/caffe/python')
+sys.path.insert(0, '/home/wangwq/Documents/repos/caffe/python')
 import caffe
 ```
 注意：libtiff需要4.0版本，wsl ubuntu20.04更新后可能会升级为4.1，可以从[官网](http://download.osgeo.org/libtiff/)下载[tiff-4.0.10.zip](http://download.osgeo.org/libtiff/tiff-4.0.10.zip)，然后编译安装libtiff
